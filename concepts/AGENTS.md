@@ -10,18 +10,15 @@
 
 ## 已有内容
 
-| 文件 | 概念 |
-|------|------|
-| [00-overview.md](00-overview.md) | 六大核心概念总览 |
-| [01-repo-as-source-of-truth.md](01-repo-as-source-of-truth.md) | 仓库即记录系统 |
-| [02-mechanical-enforcement.md](02-mechanical-enforcement.md) | 机械化执行 |
-| [03-entropy-and-garbage-collection.md](03-entropy-and-garbage-collection.md) | 熵管理与垃圾回收 |
-
-## 待补充
-
-- [ ] 04 — 智能体可读性（Agent Readability）
-- [ ] 05 — 吞吐量改变合并理念（Throughput Changes Merge Philosophy）
-- [ ] 06 — 不断提高的自主水平（Increasing Autonomy）
+| 文件 | 概念 | 来源 |
+|------|------|------|
+| [00-overview.md](00-overview.md) | 六大核心概念总览 | OpenAI 原文 |
+| [01-repo-as-source-of-truth.md](01-repo-as-source-of-truth.md) | 仓库即记录系统 | OpenAI 原文 |
+| [02-mechanical-enforcement.md](02-mechanical-enforcement.md) | 机械化执行 | OpenAI 原文 |
+| [03-entropy-and-garbage-collection.md](03-entropy-and-garbage-collection.md) | 熵管理与垃圾回收 | OpenAI 原文 |
+| [04-agent-readability.md](04-agent-readability.md) | 智能体可读性 | OpenAI + LangChain + HumanLayer + Fowler |
+| [05-throughput-changes-merge.md](05-throughput-changes-merge.md) | 吞吐量改变合并理念 | OpenAI + HumanLayer + LangChain + Fowler |
+| [06-harness-definition.md](06-harness-definition.md) | Harness 的精确定义与组件清单 | LangChain + HumanLayer + Fowler |
 
 ## 下一步
 

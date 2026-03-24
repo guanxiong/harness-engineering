@@ -56,7 +56,7 @@ Custom linters + structural tests = invariant guardians. Lint error messages emb
 
 Prefer "boring" technologies (stable APIs, well-represented in training data). Sometimes re-implementing a focused subset is cheaper than wrapping opaque upstream behavior. Make the app launchable per git worktree.
 
-→ Coming soon
+→ See [concepts/04-agent-readability.md](concepts/04-agent-readability.md)
 </details>
 
 <details>
@@ -64,7 +64,7 @@ Prefer "boring" technologies (stable APIs, well-represented in training data). S
 
 Short PR lifecycles. Flaky tests resolved by re-runs rather than blocking indefinitely. In a system where agent throughput far exceeds human attention, this is usually the right call.
 
-→ Coming soon
+→ See [concepts/05-throughput-changes-merge.md](concepts/05-throughput-changes-merge.md)
 </details>
 
 <details>

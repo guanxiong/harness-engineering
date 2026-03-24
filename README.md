@@ -56,7 +56,7 @@ Slack 讨论、Google Docs、脑子里的知识 = 对智能体不可见。一切
 
 选"无聊"技术（API 稳定、训练集覆盖好）。有时重新实现子集比包装不透明的上游行为更划算。让应用可以按 git worktree 启动。
 
-→ 待补充
+→ 详见 [concepts/04-agent-readability.md](concepts/04-agent-readability.md)
 </details>
 
 <details>
@@ -64,7 +64,7 @@ Slack 讨论、Google Docs、脑子里的知识 = 对智能体不可见。一切
 
 PR 生命周期很短。测试偶发失败通过后续重跑解决。在智能体吞吐量远超人类注意力的系统中，这通常是正确的选择。
 
-→ 待补充
+→ 详见 [concepts/05-throughput-changes-merge.md](concepts/05-throughput-changes-merge.md)
 </details>
 
 <details>

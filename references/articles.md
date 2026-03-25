@@ -54,7 +54,63 @@
   - **Ralph Loop** — 拦截退出、重注入提示词、强制在新上下文窗口中继续
   - **Harness 与模型训练耦合** — 模型会 overfit 到特定 harness，换 harness 表现可能暴跌（Terminal Bench 2.0：纯 harness 优化可把排名从 Top 30 拉到 Top 5）
 
-### 4. HumanLayer / Kyle — 实践与避坑
+### 4. Anthropic / Prithvi Rajasekaran — Harness 设计实战（长时自主编码）
+
+- **标题：** Harness design for long-running application development
+- **链接：** [anthropic.com](https://www.anthropic.com/engineering/harness-design-long-running-apps)
+- **作者：** Prithvi Rajasekaran (Anthropic Labs) | **日期：** 2026-03-24
+- **核心：** Anthropic 官方工程博客，GAN 启发的三智能体架构实战，从前端设计到全栈自主编码
+
+- **两个核心问题：**
+  1. **Context Anxiety** — 模型接近上下文极限时提前收尾（Sonnet 4.5 尤为明显），compaction 不够，需要 context reset
+  2. **Self-Evaluation 失败** — 智能体评估自己的工作时倾向于过度称赞，即使质量平庸
+
+- **三智能体架构（GAN 启发）：**
+
+| 智能体 | 职责 |
+|--------|------|
+| Planner | 1-4 句提示词 → 完整产品规格（刻意高层级，避免细节错误向下游级联） |
+| Generator | 按 sprint 逐特性实现，React + Vite + FastAPI + SQLite/PostgreSQL |
+| Evaluator | 用 Playwright MCP 实际操作运行中的应用，逐条验证 sprint 合同，打分 + 写详细 critique |
+
+- **Sprint 合同机制：**
+  - 每个 sprint 前，Generator 和 Evaluator **协商**"done 长什么样"
+  - Generator 提议构建内容和验证标准，Evaluator 审核
+  - 双方迭代达成一致后才开始编码
+  - 解决了 spec 太高层级 → 实现不可验证的 gap
+
+- **评估标准（前端设计 4 维度）：**
+  1. Design Quality — 是否有连贯的视觉身份（权重高）
+  2. Originality — 是否有原创设计决策，而非 AI 模板（权重高）
+  3. Craft — 排版、间距、对比度等技术执行（默认就好）
+  4. Functionality — 可用性独立于美学（默认就好）
+
+- **迭代进化（模型升级后的 Harness 瘦身）：**
+
+| 版本 | 模型 | 架构 | 时长 | 成本 |
+|------|------|------|------|------|
+| Solo baseline | Opus 4.5 | 单智能体 | 20 min | $9 |
+| V1 Harness | Opus 4.5 | Planner + Generator(sprint) + Evaluator(per-sprint) | ~6 hr | $200 |
+| V2 Harness | Opus 4.6 | Planner + Generator(无 sprint) + Evaluator(单次 pass) | ~4 hr | $125 |
+
+- **关键经验：**
+  - **每个 harness 组件都编码了一个假设**（"模型不能独立做 X"），这些假设需要定期重新压测
+  - 新模型发布后应精简 harness：去掉不再承重的部分，添加新能力
+  - Evaluator 的价值取决于任务是否处于模型能力边界：边界内 → 开销浪费；边界外 → 真正有帮助
+  - "有趣的 harness 组合空间不会随模型改进而缩小——它会移动"
+
+- **与其他文章的关联：**
+
+| Anthropic 概念 | 对应文章 |
+|---------------|---------|
+| Context Anxiety + Reset | LangChain 的 Context Rot + Ralph Loop |
+| Self-Evaluation 失败 → 分离 Evaluator | HumanLayer 的 Sub-Agent 上下文防火墙 |
+| Sprint 合同 | OpenAI 的执行计划（exec-plans） |
+| 4 维度评分标准 | OpenAI 的 QUALITY_SCORE.md |
+| Harness 瘦身原则 | Fowler 的"约束越严，自主性越强" |
+| "找最简方案，按需增加复杂度" | HumanLayer 的"简单开始，按需添加" |
+
+### 5. HumanLayer / Kyle — 实践与避坑
 
 - **标题：** Skill Issue: Harness Engineering for Coding Agents
 - **链接：** [humanlayer.dev](https://www.humanlayer.dev/blog/skill-issue-harness-engineering-for-coding-agents)
@@ -86,19 +142,19 @@
 
 ## 脉络二：云原生时代的 Harness.io（交付与平台工程）
 
-### 5. Harness.io 官方 — 全局架构
+### 6. Harness.io 官方 — 全局架构
 
 - **标题：** Understanding CI/CD Platforms: The backbone of modern DevOps
 - **链接：** [harness.io](https://www.harness.io/blog/understanding-ci-cd-platforms-the-backbone-of-modern-devops)
 - **核心：** 标准 CI/CD 平台介绍。8 大组件：SCM → Build → Test → Code Quality → Security Scan → Artifact → Deploy → Monitor
 - **Harness 差异化：** 统一管线、Test Intelligence 智能测试、最少脚本、Policy-as-Code 治理
 
-### 6. Medium 实战专栏 — 未找到
+### 7. Medium 实战专栏 — 未找到
 
 - **标题：** Beyond Migration: How We Engineered a Secure & Intelligent Delivery Platform with Harness CICD
 - **状态：** 文章可能已下架或标题有误，待补充
 
-### 7. Google Cloud Architecture — 前沿场景结合
+### 8. Google Cloud Architecture — 前沿场景结合
 
 - **标题：** Harness CI/CD pipeline for RAG applications
 - **链接：** [docs.cloud.google.com](https://docs.cloud.google.com/architecture/partners/harness-cicd-pipeline-for-rag-app)
@@ -111,7 +167,7 @@
 
 ## 脉络三：效率悖论与能力进化
 
-### 8. YDD / Miss-you — 效率悖论的系统性拆解
+### 9. YDD / Miss-you — 效率悖论的系统性拆解
 
 - **标题：** 为什么 AI 写代码更快但交付没变，以及我怎么把它扳回来的
 - **链接：** [yousali.com](https://yousali.com/posts/20260303-ai-coding-efficiency-to-evolution/)

@@ -148,6 +148,12 @@ harness-engineering/
 | Steer With Signals, Not Scripts | 人类掌舵 — 加路标，不加脚本 |
 | Let Ralph Ralph | 智能体执行 — 坐在循环上，不坐在循环里 |
 
+### Anthropic 官方 — Harness 设计实战
+
+| 资源 | 说明 |
+|------|------|
+| [Harness design for long-running apps](https://www.anthropic.com/engineering/harness-design-long-running-apps) | Anthropic Labs 实战：GAN 启发的三智能体架构（Planner→Generator→Evaluator），Sprint 合同机制，Context Anxiety 解法，Harness 随模型升级瘦身的方法论 |
+
 ### 效率悖论与能力进化
 
 | 资源 | 说明 |

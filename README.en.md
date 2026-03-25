@@ -149,6 +149,12 @@ The "Ralph Wiggum Loop" is the core implementation pattern of Harness Engineerin
 | Steer With Signals, Not Scripts | Humans Steer — add signs, not scripts |
 | Let Ralph Ralph | Agents Execute — sit on the loop, not in it |
 
+### Anthropic Official — Harness Design in Practice
+
+| Resource | Description |
+|----------|-------------|
+| [Harness design for long-running apps](https://www.anthropic.com/engineering/harness-design-long-running-apps) | Anthropic Labs: GAN-inspired three-agent architecture (Planner→Generator→Evaluator), sprint contracts, Context Anxiety fix, harness simplification as models improve |
+
 ### Efficiency Paradox & Capability Evolution
 
 | Resource | Description |

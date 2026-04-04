@@ -185,6 +185,12 @@ harness-engineering/
 | Telegram 频道 | [@lovedesuyu](https://t.me/lovedesuyu) |
 | Email | [rainman.deus@gmail.com](mailto:rainman.deus@gmail.com) |
 
+## Star History
+
+如果这个项目对您有帮助，请考虑为其点亮一颗 Star ⭐！
+
+[![Star History Chart](https://api.star-history.com/svg?repos=deusyu/harness-engineering&type=Date)](https://star-history.com/#deusyu/harness-engineering&Date)
+
 ## 📄 License
 
 MIT

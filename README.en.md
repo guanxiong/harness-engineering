@@ -186,6 +186,12 @@ Contributions via Issues and PRs are welcome:
 | Telegram Channel | [@lovedesuyu](https://t.me/lovedesuyu) |
 | Email | [rainman.deus@gmail.com](mailto:rainman.deus@gmail.com) |
 
+## Star History
+
+If you find this project helpful, please consider giving it a Star ⭐!
+
+[![Star History Chart](https://api.star-history.com/svg?repos=deusyu/harness-engineering&type=Date)](https://star-history.com/#deusyu/harness-engineering&Date)
+
 ## 📄 License
 
 MIT
